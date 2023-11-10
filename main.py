@@ -20,7 +20,7 @@ inputs = f.read().split("\n")
 f.close()
 
 if len(inputs) <= 0:
-    print("Error: inputs.txt must have 2 lines")
+    print("Error: inputs.txt must have at least 1 line")
     exit()
 
 for line in inputs:
@@ -156,7 +156,12 @@ for line in inputs:
     ActionChains(driver).send_keys(Keys.ESCAPE).perform()
     sleep(1)
 
+json_string = json.dumps(past_dates, indent=4)
+
 # add added dates to past_appts.json
-f = open("past_appts.json", "w")
-json.dump(past_dates, f, indent=4)
-f.close()
+# f = open("past_appts.json", "w")
+# json.dumps(past_dates, f, indent=4)
+# f.close()
+
+with open('past_appts.json', 'w') as json_file:
+    json_file.write(json_string)
