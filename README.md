@@ -12,14 +12,21 @@ Set up `inputs.txt`. The `inputs.txt` file contains the appointments that you wa
 ```
 Example `inputs.txt`:
 ```
-2023/01/01 1:00 pm 2:00 pm John Doe CS1110
-2023/02/04 2:00 pm 3:00 pm John Doe CS1112
-2023/03/05 3:00 pm 4:00 pm John Doe CS1112
+2023/01/01 1:00 pm 2:00 pm CS38
+2023/02/04 2:00 pm 3:00 pm CS38
+2023/03/05 3:00 pm 4:00 pm CS38
 ```
 Note: make sure the month and days are always 2 digits long. For example, January 1st should be `2023-01-01` and not `2023-1-1`. Also, student names should be 2 words.
 
+Set up `.env` file. This file contains your name.
+
+Example `.env`:
+```
+NAME=John Doe
+```
+
 ### Run
-Run `python3 main.py` in your terminal. This will open up a browser window and automatically schedule all of your appointments.
+Open up terminal and navigate to the folder with this repository's contents. Run `python3 main.py` in your terminal. This will open up a browser window and automatically schedule all of your appointments.
 
 ### Other Notes:
 `past_appts.json` keeps track of all your past appointments. This is useful because the script will not schedule appointments that you have already scheduled. So each time you want to add an appointment, simply add the new appoointments to `input.txt`, and you don't have to worry about deleting past appointments.
