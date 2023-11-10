@@ -129,7 +129,7 @@ def make_appt(month, day, year, start_time, end_time, name, description):
     sleep(4)
 
 f = open("past_appts.json", "r")
-past_dates = set(list(json.load(f)))
+past_dates = list(json.load(f))
 f.close()
 
 for line in inputs:
@@ -143,15 +143,20 @@ for line in inputs:
     end_time = f"{line[3]} {line[4]}"
     description = line[5]
 
-    
-    if "/".join(date) in past_dates:
-        print(f"Skipping {date}")
+    date_str = line[0]
+    if date_str in past_dates:
+        print(f"Skipping {date_str}")
         continue
     try:
         make_appt(month, day, year, start_time, end_time, NAME, description)
+        past_dates.append(date_str)
     except Exception as e:
         print(f"Error on {date}: {e}")
     sleep(1)
     ActionChains(driver).send_keys(Keys.ESCAPE).perform()
     sleep(1)
-    
+
+# add added dates to past_appts.json
+f = open("past_appts.json", "w")
+json.dump(past_dates, f, indent=4)
+f.close()
