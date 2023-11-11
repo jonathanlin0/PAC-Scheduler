@@ -14,8 +14,8 @@ The <description> part can be anything you want. Typically, the description cont
 Example `inputs.txt`:
 ```
 2023/01/01 1:00 pm 2:00 pm CS38; location: Lloyd
-2023/02/04 2:00 pm 3:00 pm CS38; location: Lloyd
-2023/03/05 3:00 pm 4:00 pm CS38; location: Lloyd
+2023/02/04 2:00 pm 3:00 pm CS38
+2023/03/05 3:00 pm 4:00 pm CS38 (lloyd dining hall)
 ```
 Note: make sure the month and days are always 2 digits long. For example, January 1st should be `2023/01/01` and not `2023/1/1`. Also, student names should be 2 words.
 
