@@ -6,13 +6,31 @@ from selenium.webdriver.common.action_chains import ActionChains
 import json
 from time import sleep
 import getpass
-from dotenv import load_dotenv
-import os
-load_dotenv()
 
-NAME = os.getenv('NAME')
+MIN_ITEMS_PER_LINE_INPUT_TXT = 6
 
-ITEMS_PER_LINE_INPUT_TXT = 6
+# read in your name
+f = open("name.txt", "r")
+NAME = f.read()
+f.close()
+NAME = NAME.title().replace("\n", "")
+
+# remove empty lines from input.txt
+# Read the lines from the file
+with open('inputs.txt', 'r') as f:
+    lines = f.read().split("\n")
+print(lines)
+# Filter out empty lines
+non_empty_lines = []
+for i, line in enumerate(lines):
+    if line.strip() != "":
+        non_empty_lines.append(line)
+    else:
+        print(f"Warning: line {i+1} is empty and will be ignored")
+
+# Write the non-empty lines back to the file
+with open('inputs.txt', 'w') as f:
+    f.write("\n".join(non_empty_lines))
 
 # do initial checks on inputs.txt
 f = open("inputs.txt", "r")
@@ -24,8 +42,8 @@ if len(inputs) <= 0:
     exit()
 
 for line in inputs:
-    if len(line.split()) != ITEMS_PER_LINE_INPUT_TXT:
-        print(f"Error: inputs.txt must have {ITEMS_PER_LINE_INPUT_TXT} lines")
+    if len(line.split()) < MIN_ITEMS_PER_LINE_INPUT_TXT:
+        print(f"Error: inputs.txt must have {MIN_ITEMS_PER_LINE_INPUT_TXT} lines")
         print("Check README.txt for the exact format of inputs.txt")
         exit()
     
@@ -159,9 +177,5 @@ for line in inputs:
 json_string = json.dumps(past_dates, indent=4)
 
 # add added dates to past_appts.json
-# f = open("past_appts.json", "w")
-# json.dumps(past_dates, f, indent=4)
-# f.close()
-
 with open('past_appts.json', 'w') as json_file:
     json_file.write(json_string)

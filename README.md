@@ -16,13 +16,13 @@ Example `inputs.txt`:
 2023/02/04 2:00 pm 3:00 pm CS38
 2023/03/05 3:00 pm 4:00 pm CS38
 ```
-Note: make sure the month and days are always 2 digits long. For example, January 1st should be `2023-01-01` and not `2023-1-1`. Also, student names should be 2 words.
+Note: make sure the month and days are always 2 digits long. For example, January 1st should be `2023/01/01` and not `2023/1/1`. Also, student names should be 2 words.
 
-Set up `.env` file. This file contains your name.
+Set up `names.txt` file. This file contains your name.
 
-Example `.env`:
+Example `names.txt`:
 ```
-NAME=John Doe
+John Doe
 ```
 
 ### Run
