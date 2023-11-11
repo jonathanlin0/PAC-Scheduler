@@ -159,7 +159,7 @@ for line in inputs:
 
     start_time = f"{line[1]} {line[2]}"
     end_time = f"{line[3]} {line[4]}"
-    description = line[5]
+    description = " ".join(line[5:])
 
     date_str = line[0]
     if date_str in past_dates:
